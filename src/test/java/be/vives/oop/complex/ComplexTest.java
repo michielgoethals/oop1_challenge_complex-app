@@ -82,6 +82,17 @@ public class ComplexTest {
   }
 
   @Test
+  public void testSubtractAnotherComplex() {
+    Complex first = new Complex(0.32, 55.13);
+    Complex second = new Complex(-134.33, 12.01);
+
+    Complex result = first.subtract(second);
+
+    assertEquals(first.getReal() - second.getReal(), result.getReal(), delta);
+    assertEquals(first.getImaginary() - second.getImaginary(), result.getImaginary(), delta);
+  }
+
+  @Test
   public void testAddShouldNotChangeOriginalObjects() {
     Complex first = new Complex(0.32, 55.13);
     String firstString = first.toString();
@@ -135,9 +146,19 @@ public class ComplexTest {
     Complex first = new Complex(25, -3);
     double factor = 2;
 
-    Complex result = first.divide(factor);
+    Complex result = first.divideFactor(factor);
 
     assertEquals(12.5, result.getReal(), delta);
     assertEquals(-1.5, result.getImaginary(), delta);
+  }
+  @Test
+  public void testmultiplyByFactor() {
+    Complex first = new Complex(25, -3);
+    double factor = 2;
+
+    Complex result = first.multiplyFactor(factor);
+
+    assertEquals(50, result.getReal(), delta);
+    assertEquals(-6, result.getImaginary(), delta);
   }
 }
